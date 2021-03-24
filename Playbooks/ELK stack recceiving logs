@@ -1,1 +1,71 @@
+System logs  
+The system Filebeat module collects and parses logs created by the system logging service of common Unix/Linux based distributions. This module is not available on Windows. Learn more.
 
+View exported fields
+screenshot of primary dashboard.
+
+
+Self managed
+
+Elastic Cloud
+Getting Started
+
+macOS
+
+DEB
+
+RPM
+1
+Download and install Filebeat
+
+First time using Filebeat? See the Getting Started Guide.
+
+
+Copy snippet
+curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-7.6.1-darwin-x86_64.tar.gz
+tar xzvf filebeat-7.6.1-darwin-x86_64.tar.gz
+cd filebeat-7.6.1-darwin-x86_64/
+2
+Edit the configuration
+
+Modify filebeat.yml to set the connection information:
+
+
+Copy snippet
+output.elasticsearch:
+  hosts: ["<es_url>"]
+  username: "elastic"
+  password: "<password>"
+setup.kibana:
+  host: "<kibana_url>"
+Where <password> is the password of the elastic user, <es_url> is the URL of Elasticsearch, and <kibana_url> is the URL of Kibana.
+
+3
+Enable and configure the system module
+
+From the installation directory, run:
+
+
+Copy snippet
+./filebeat modules enable system
+Modify the settings in the modules.d/system.yml file.
+
+4
+Start Filebeat
+
+The setup command loads the Kibana dashboards. If the dashboards are already set up, omit this command.
+
+
+Copy snippet
+./filebeat setup
+./filebeat -e
+Module status
+
+Check that data is received from the Filebeat system module
+
+
+Check data
+Data successfully received from this module
+When all steps are complete, you're ready to explore your data.
+
+System logs dashboard
